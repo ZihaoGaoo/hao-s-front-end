@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://unpkg.com/vue@3"></script>
+
+<body>
+  <div id="app">
+    <div v-color @click="handClick">
+      {{ `${obj.message} and ${obj.msg}` }}
+    </div>
+  </div>
+
+  <div id="app2">
+    <div @click="handClick">
+      {{ `${obj.message} and ${obj.msg}` }}
+    </div>
+  </div>
+
+  <div id="app3">
+    <div onclick="handClick" class="app3">
+      {{ `${obj.message} and ${obj.msg}` }}
+    </div>
+  </div>
+
+  <!-- vue3 -->
+  <script>
+    const { createApp } = Vue;
+    const vue = createApp({
+      data: () => ({ obj: { message: 'message' } }),
+      methods: {
+        handClick() {
+          this.obj.msg = 'msg'
+        }
+      }
+    })
+
+    vue.directive('color', (el, binding) => {
+      // console.log(binding);
+      el.style.color = 'red'
+    })
+    vue.mount('#app')
+  </script>
+
+  <!-- vue2 -->
+  <script type="module">
+    import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.esm.browser.js'
+    const vm = new Vue({
+      data: () => ({ obj: { message: 'message' } }),
+      methods: {
+        handClick() {
+          this.$set(this.obj, 'msg', 'msg');
+
+          // this.obj.msg = 'msg'
+        }
+      }
+    })
+    vm.$mount('#app2')
+  </script>
+
+  <!-- vue2响应式原理 -->
+  <script>
+    const app3 = document.querySelector('.app3');
+    // app3.innerHTML
+
+    function handClick() {}
+  </script>
+</body>
+
+</html>

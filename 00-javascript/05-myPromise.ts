@@ -85,6 +85,10 @@ class MyPromise {
     return promise;
   }
 
+  catch(errCallback) {
+    return this.then(null, errCallback);
+  }
+
   // 多个异步并发获取最终的结果（如果有一个失败则返回此失败）
   static all(arr: Array<MyPromise>) {
     return new MyPromise((resolve, reject) => {

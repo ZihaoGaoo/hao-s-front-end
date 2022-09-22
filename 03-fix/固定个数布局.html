@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      /* flex实现 */
+      /* display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap; */
+
+      display: grid;
+      grid-template-columns: repeat(12, 1fr); 
+      justify-content: space-between;
+    }
+
+    .container div {
+      width: 200px;
+      height: 200px;
+      margin: 1px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <script>
+    // const dom = document.querySelector('.container');
+    // new Array(12 - dom.children.length % 12).fill().forEach(v => {
+    //   const div = document.createElement('div');
+    //   div.classList.add('container');
+    //   div.style.opacity = 0;
+    //   dom.append(div);
+    // })
+  </script>
+</body>
+
+</html>

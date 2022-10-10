@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child1"></div>
+    <div class="child2"></div>
+    <div class="child3"></div>
+    <div class="child4"></div>
+    <div class="child5" key="child5"></div>
+  </div>
+
+  <script>
+    // 捕获或冒泡只是规定事件的执行时机，均可通过e.target获取到目标对象
+
+    // stopPropagation方法防止调用相同事件的传播（传播意味着向上冒泡到父元素或向下捕获到子元素）
+
+    // stopImmediatePropagation阻止监听同一事件的其他事件监听器被调用
+
+    // e.target指向的是触发事件的元素
+    // e.currentTarget指向的是添加监听事件的元素
+    const parent = document.querySelector('.parent');
+    parent.addEventListener('click', (e) => {
+      console.log(e.target, 'catch');
+      console.log(e.currentTarget, 'currentTarget')
+    }, true)
+    parent.addEventListener('click', (e) => {
+      console.log(e.target, 'pop');
+    })
+
+    const child1 = document.querySelector('.child1');
+    child1.addEventListener('click', (e) => {
+      e.stopPropagation();
+      console.log(e.target, 'catch');
+      console.log(e.currentTarget, 'currentTarget')
+    })
+  </script>
+</body>
+</html>
